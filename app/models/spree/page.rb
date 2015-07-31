@@ -2,6 +2,7 @@ class Spree::Page < ActiveRecord::Base
   default_scope { order(position: :asc) }
 
   has_and_belongs_to_many :stores, join_table: 'spree_pages_stores'
+  belongs_to :page_category, class_name: 'Spree::PageCategory'
 
   validates :title, presence: true
   validates :slug, :body, presence: true, if: :not_using_foreign_link?

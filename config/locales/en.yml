@@ -17,6 +17,10 @@ en:
         slug: Slug
         title: Title
         visible: Visible
+      spree/page_category:
+        name: Name
+        description: Description
+        visible: Visible
     models:
       spree/page:
         one: Page
@@ -25,3 +29,6 @@ en:
     static_content:
       link: Link
       new_page: New page
+    page_category:
+      new_page_category: New page category
+      pages_count: Pages

@@ -1,0 +1,44 @@
+<% content_for :page_title do %>
+  <%= plural_resource_name(Spree::PageCategory) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to Spree.t(:new_page_category, scope: :page_category), new_object_url, icon: 'plus', class: 'btn-primary', id: 'admin_new_page_category' %>
+<% end %>
+
+<% if @page_categories.any? %>
+  <table class="table" id="listing_page_categories" data-hook>
+    <colgroup>
+      <col style="width: 40%">
+      <col style="width: 35%">
+      <col style="width: 10%">
+      <col style="width: 15%">
+    </colgroup>
+    <thead>
+      <tr data-hook="admin_page_categoriess_index_headers">
+        <th><%= Spree::PageCategory.human_attribute_name(:name) %></th>
+        <th><%= Spree.t(:pages_count, scope: :page_category) %></th>
+        <th class="text-center"><%= Spree::PageCategory.human_attribute_name(:visible) %></th>
+        <th data-hook="admin_page_categories_index_header_actions" class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @page_categories.each do |page_category| %>
+        <tr data-hook="admin_page_categories_index_rows" class="<%= cycle('odd', 'even') %>" id="<%= dom_id page_category %>">
+          <td><%= page_category.name %></td>
+          <td><&= page_category.pages.count %></td>
+          <td class="text-center"><%= content_tag(:i, '', class: 'icon icon-ok') if page_category.visible %></td>
+          <td class="actions text-right" data-hook="admin_page_categories_index_row_actions">
+            <%= link_to_edit page_category, no_text: true %>
+            <%= link_to_delete page_category, no_text: true %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alert alert-warning no-objects-found">
+    <%= Spree.t(:no_resource_found, resource: Spree::PageCategory.model_name.human) %>,
+    <%= link_to Spree.t(:add_one), spree.new_admin_page_category_path %>!
+  </div>
+<% end %>

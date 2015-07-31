@@ -1,6 +1,8 @@
 RSpec.describe Spree::Page, type: :model do
   let!(:page) { create(:page) }
 
+  it{is_expected.to belong_to(:page_category)}
+
   context 'factory' do
     it 'is valid' do
       expect(page).to be_valid
@@ -37,4 +39,8 @@ RSpec.describe Spree::Page, type: :model do
       expect(pages_by_store).to_not include(@page2)
     end
   end
+
+
+  context ''
+
 end

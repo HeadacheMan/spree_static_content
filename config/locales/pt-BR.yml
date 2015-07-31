@@ -17,6 +17,10 @@ pt-BR:
         slug: Slug
         title: Título
         visible: Visível
+      spree/page_category:
+        name: Nome
+        description: Descrição
+        visible: Visivel
     models:
       spree/page:
         one: Página
@@ -25,3 +29,6 @@ pt-BR:
     static_content:
       link: Link
       new_page: "Nova página"
+    page_category:
+      new_page_category: "Nova categoria"
+      pages_count: "Páginas"

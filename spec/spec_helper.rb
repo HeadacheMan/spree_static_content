@@ -13,6 +13,7 @@ end
 require 'pry'
 require 'ffaker'
 require 'rspec/rails'
+require 'shoulda/matchers'
 
 RSpec.configure do |config|
   config.mock_with :rspec

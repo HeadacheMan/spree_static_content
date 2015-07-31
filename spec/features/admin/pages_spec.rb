@@ -20,10 +20,6 @@ RSpec.feature 'Admin Static Content', :js do
       fill_in 'page_meta_keywords', with: 'spree, contact'
       fill_in 'page_meta_description', with: 'Short description for contact page.'
 
-      check 'page_show_in_sidebar'
-      check 'page_show_in_header'
-      check 'page_show_in_footer'
-
       expect(find('#page_visible')).to be_checked
 
       click_button 'Create'
