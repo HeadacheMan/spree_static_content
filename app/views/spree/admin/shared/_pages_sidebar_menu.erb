@@ -1,5 +1,15 @@
 <% if can? :admin, Spree::Page %>
   <ul class="nav nav-sidebar">
-    <%= tab Spree::Page, url: spree.admin_pages_url, icon: 'leaf', label: plural_resource_name(Spree::Page) %>
+    <li class="sidebar-menu-item">
+      <%= link_to '#sidebar-page', {data: {toggle: 'collapse', parent: '#sidebar'}} do %>
+        <span class="icon icon-leaf"></span>
+        <span class="text"><%= Spree.t(:pages) %></span>
+        <span class="icon icon-chevron-left pull-right"></span>
+      <% end %>
+      <ul id="sidebar-page" class="collapse nav nav-pills nav-stacked" data-hook="admin_page_sub_tabs">
+        <li><%= link_to Spree.t(:pages), spree.admin_pages_url %></li>
+        <li><%= link_to Spree.t(:page_categories), spree.admin_page_categories_url %></li>
+      </ul>
+    </li>
   </ul>
 <% end %>
