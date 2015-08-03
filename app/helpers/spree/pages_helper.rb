@@ -8,9 +8,9 @@ module Spree
 
     # Render a list of pages from the specified
     # category using default bootstrap3 elements
-    # @param Category [Symbol] PageCategory resource name
-    def render_pages_menu_for(category)
-      category = Spree::PageCategory.find_by name: category.to_s
+    # @param slug [Spree::PageCategory] Slug from a PageCategory resource
+    def render_pages_menu_for(slug)
+      category = Spree::PageCategory.find_by name: slug.to_s
       if category && category.pages.count > 0
         list = content_tag :ul, {class: 'page-menu'} do
           category.pages.each do |page|

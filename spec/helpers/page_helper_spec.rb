@@ -13,9 +13,9 @@ RSpec.describe Spree::PagesHelper, type: :helper do
   context '.render_pages_menu_for' do
 
     it 'renders a menu with links from a specified page category' do
-      pg = create(:page_category, name: 'test')
+      pg = create(:page_category, name: 'test', slug: 'test_category')
       4.times {create(:page, page_category: pg)}
-      expect(render_pages_menu_for(:test)).not_to be_nil
+      expect(render_pages_menu_for(:test_category)).not_to be_nil
     end
 
     it 'renders nothing when the specified category has no posts or dont exist' do

@@ -11,6 +11,8 @@ RSpec.describe Spree::PageCategory, type: :model do
   context 'validations' do
     it{is_expected.to validate_presence_of(:name)}
     it{is_expected.to validate_uniqueness_of(:name)}
+    it{is_expected.to validate_presence_of(:slug)}
+    it{is_expected.to validate_uniqueness_of(:slug)}
     it{is_expected.to have_many(:pages)}
   end
 

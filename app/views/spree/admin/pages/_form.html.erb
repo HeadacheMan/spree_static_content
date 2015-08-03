@@ -26,6 +26,11 @@
 
     <div class="col-md-6" data-hook="admin_page_form_right">
       <div class="form-group">
+        <%= f.label :page_category_id %>
+        <%= f.collection_select :page_category_id, Spree::PageCategory.visible, :id, :name, {include_blank: true}, class: 'select2' %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :layout %>
         <%= f.text_field :layout, class: 'form-control' %>
       </div>
