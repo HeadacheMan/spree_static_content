@@ -4,11 +4,14 @@ module SpreeStaticContent
     isolate_namespace Spree
     engine_name 'spree_static_content'
 
-    config.autoload_paths += %W(#{config.root}/lib)
+    # use rspec for tests
+    config.generators do |g|
+      g.test_framework :rspec
+    end
 
     def self.activate
-      Dir.glob(%W(#{config.root}/app/overrides/*.rb)) do |klass|
-        Rails.configuration.cache_classes ? require(klass) : load(klass)
+      Dir.glob(File.join(File.dirname(__FILE__), '../../app/**/*_decorator*.rb')) do |c|
+        Rails.configuration.cache_classes ? require(c) : load(c)
       end
     end
 
