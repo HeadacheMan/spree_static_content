@@ -26,7 +26,7 @@
       <% @page_categories.each do |page_category| %>
         <tr data-hook="admin_page_categories_index_rows" class="<%= cycle('odd', 'even') %>" id="<%= dom_id page_category %>">
           <td><%= page_category.name %></td>
-          <td><&= page_category.pages.count %></td>
+          <td><%= page_category.pages.count %></td>
           <td class="text-center"><%= content_tag(:i, '', class: 'icon icon-ok') if page_category.visible %></td>
           <td class="actions text-right" data-hook="admin_page_categories_index_row_actions">
             <%= link_to_edit page_category, no_text: true %>

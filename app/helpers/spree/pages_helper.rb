@@ -10,7 +10,7 @@ module Spree
     # category using default bootstrap3 elements
     # @param slug [Spree::PageCategory] Slug from a PageCategory resource
     def render_pages_menu_for(slug)
-      category = Spree::PageCategory.find_by name: slug.to_s
+      category = Spree::PageCategory.find_by slug: slug.to_s
       if category && category.pages.count > 0
         list = content_tag :ul, {class: 'page-menu'} do
           category.pages.each do |page|
